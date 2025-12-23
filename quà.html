@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc Mừng Giáng Sinh 2024</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+            background: #080c1a;
+            color: white;
+            height: 100vh;
+            width: 100vw;
+            cursor: pointer;
+        }
+
+        /* Screen common styles */
+        .screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.8s ease;
+        }
+
+        /* Màn hình bắt đầu */
+        #start-screen {
+            background: radial-gradient(ellipse at center, #131830 0%, #080c1a 100%);
+        }
+
+        .start-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5rem;
+            color: #ff6b81;
+            margin-bottom: 1rem;
+            text-align: center;
+            text-shadow: 0 0 30px rgba(255, 107, 129, 0.8);
+            background: linear-gradient(45deg, #ff6b81, #ff9f43);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: titleFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes titleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .start-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #d1d8e0;
+            text-align: center;
+            max-width: 80%;
+            opacity: 0.9;
+            padding: 0 20px;
+        }
+
+        .start-hint {
+            font-size: 1.1rem;
+            color: #ff9f43;
+            margin-top: 3rem;
+            text-align: center;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* Màn hình cây thông */
+        #tree-screen {
+            background: #080c1a;
+        }
+
+        .tree-canvas-container {
+            position: relative;
+            width: 400px;
+            height: 500px;
+            margin-bottom: 2rem;
+        }
+
+        #tree-canvas {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 25px rgba(46, 204, 113, 0.4));
+        }
+
+        .tree-instruction {
+            font-size: 1.3rem;
+            color: #d1d8e0;
+            text-align: center;
+            margin-top: 1rem;
+            opacity: 0.8;
+            padding: 0 20px;
+            max-width: 500px;
+        }
+
+        .tree-hint {
+            font-size: 1.2rem;
+            color: #ff9f43;
+            text-align: center;
+            margin-top: 2rem;
+            animation: blink 1.5s infinite;
+        }
+
+        /* Màn hình thiệp */
+        #card-screen {
+            background: rgba(8, 12, 26, 0.98);
+        }
+
+        .card-container {
+            perspective: 1500px;
+            width: 500px; /* Rộng hơn */
+            height: 800px; /* Cao hơn */
+            opacity: 1;
+            transition: transform 0.5s ease;
+        }
+
+        .card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .card.opened {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2.5rem;
+            overflow: hidden;
+        }
+
+        /* Mặt trước thiệp */
+        .card-front {
+            background: linear-gradient(135deg, #1a1f3b, #0c1120);
+            border: 3px solid rgba(255, 107, 129, 0.4);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6);
+            cursor: pointer;
+        }
+
+        .card-front::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 107, 129, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(46, 204, 113, 0.15) 0%, transparent 50%);
+        }
+
+        .card-front-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #ff6b81;
+            text-align: center;
+            margin-bottom: 1rem;
+            z-index: 1;
+        }
+
+        .card-front-subtitle {
+            font-size: 1.2rem;
+            color: #d1d8e0;
+            opacity: 0.8;
+            text-align: center;
+            z-index: 1;
+        }
+
+        /* Mặt sau thiệp - THIẾT KẾ MỚI */
+        .card-back {
+            background: linear-gradient(135deg, #c44569, #d63031, #e17055);
+            transform: rotateY(180deg);
+            border: 3px solid rgba(255, 215, 0, 0.6);
+            box-shadow: 
+                inset 0 0 80px rgba(0, 0, 0, 0.4),
+                0 25px 70px rgba(198, 69, 105, 0.3);
+            justify-content: flex-start;
+            padding-top: 2.5rem;
+            overflow: hidden;
+        }
+
+        .card-back::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(255, 215, 0, 0.2) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(46, 204, 113, 0.2) 0%, transparent 40%);
+            z-index: 0;
+        }
+
+        .card-back-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-back-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: #FFD700;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            text-shadow: 0 2px 15px rgba(255, 215, 0, 0.5);
+            line-height: 1;
+        }
+
+        .card-message-container {
+            width: 100%;
+            height: 500px; 
+            width: 100%;/* CAO HƠN - BỎ SCROLL */
+            padding: 1.5rem 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            box-shadow: 
+                inset 0 0 30px rgba(255, 255, 255, 0.1),
+                0 10px 30px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Ẩn overflow thay vì scroll */
+        }
+
+        .card-message {
+            font-size: 1.5rem; /* TĂNG FONT SIZE */
+            line-height: 1.3; /* TĂNG LINE HEIGHT */
+            color: #FFFFFF;
+            text-align: center;
+            white-space: pre-line;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+            max-height: 100%;
+            width: 100%;
+        }
+
+        .typing-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1.6rem;
+            background: #FFD700;
+            margin-left: 2px;
+            animation: blink 1s infinite;
+            vertical-align: middle;
+            box-shadow: 0 0 5px #FFD700;
+        }
+
+        /* Màn hình 3D chính */
+        #main-screen {
+            background: #080c1a;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+        }
+
+        .scene-container {
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.1s linear;
+        }
+
+        /* Hiệu ứng sao lấp lánh */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            transform-style: preserve-3d;
+        }
+
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 5s infinite;
+            transform-style: preserve-3d;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+
+        /* Tuyết nền - NHIỀU HƠN */
+        .snow-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            transform-style: preserve-3d;
+        }
+
+        .snowflake {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            transform-style: preserve-3d;
+        }
+
+        /* Các phần tử 3D - RỘNG HƠN */
+        .christmas-text {
+            position: absolute;
+            color: #ff6b81;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.8rem; /* LỚN HƠN */
+            text-shadow: 0 0 25px rgba(255, 107, 129, 0.9);
+            white-space: nowrap;
+            pointer-events: none;
+            transform-style: preserve-3d;
+            will-change: transform;
+            font-weight: bold;
+        }
+
+        .icon-3d {
+            position: absolute;
+            pointer-events: none;
+            font-size: 2.5rem; /* LỚN HƠN */
+            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 1));
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+
+        /* Ảnh của người nhận thiệp */
+        .photo-3d {
+            position: absolute;
+            pointer-events: none;
+            transform-style: preserve-3d;
+            will-change: transform;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+            border: 3px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .photo-3d img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Nền bóng mờ */
+        .depth-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: radial-gradient(circle at center, transparent 30%, rgba(8, 12, 26, 0.8) 70%);
+        }
+
+        /* View instruction */
+        .view-instruction {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 8px 15px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .start-title {
+                font-size: 3.5rem;
+            }
+            
+            .tree-canvas-container {
+                width: 320px;
+                height: 400px;
+            }
+            
+            .card-container {
+                width: 380px;
+                height: 500px;
+            }
+            
+            .card-message-container {
+                height: 350px;
+            }
+            
+            .card-message {
+                font-size: 1.4rem;
+            }
+            
+            .card-back-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .start-title {
+                font-size: 2.8rem;
+            }
+            
+            .tree-canvas-container {
+                width: 280px;
+                height: 350px;
+            }
+            
+            .card-container {
+                width: 320px;
+                height: 420px;
+            }
+            
+            .card-message-container {
+                height: 300px;
+            }
+            
+            .card-message {
+                font-size: 1.3rem;
+            }
+            
+            .card-back-title {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Màn hình bắt đầu -->
+    <div id="start-screen" class="screen">
+        <h1 class="start-title">Giáng Sinh Vui Vẻ</h1> <!-- ĐÃ ĐỔI TÊN -->
+        <p class="start-subtitle">Khám phá thông điệp yêu thương trong mùa Giáng Sinh này</p>
+        <p class="start-hint">Nhấn vào màn hình để bắt đầu...</p>
+    </div>
+
+    <!-- Màn hình cây thông -->
+    <div id="tree-screen" class="screen">
+        <div class="tree-canvas-container">
+            <canvas id="tree-canvas" width="400" height="500"></canvas>
+        </div>
+        <p class="tree-instruction">Đang vẽ cây thông Noel...</p>
+        <p class="tree-hint">Nhấn để tiếp tục</p>
+    </div>
+
+    <!-- Màn hình thiệp -->
+    <div id="card-screen" class="screen">
+        <div class="card-container" id="card-container">
+            <div class="card" id="christmas-card">
+                <div class="card-front">
+                    <div class="card-ornament ornament-1">🎄</div>
+                    <div class="card-ornament ornament-2">⭐</div>
+                    <div class="card-ornament ornament-3">🎁</div>
+                    <div class="card-ornament ornament-4">❄️</div>
+                    
+                    <h2 class="card-front-title">Giáng Sinh Ấm Áp</h2>
+                    <p class="card-front-subtitle">Nhấn vào thiệp để mở</p>
+                </div>
+                <div class="card-back">
+                    <div class="card-back-content">
+                        <h3 class="card-back-title">🎄 Lời Chúc Giáng Sinh 🎄</h3>
+                        <div class="card-message-container">
+                            <div class="card-message" id="card-message"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Màn hình 3D chính -->
+    <div id="main-screen" class="screen">
+        <div class="scene-container" id="scene-container">
+            <div class="stars" id="stars"></div>
+            <div class="snow-background" id="snow-bg"></div>
+            <div class="depth-overlay"></div>
+            <!-- Các phần tử 3D sẽ được thêm bằng JS -->
+        </div>
+        <div class="view-instruction">↕ Kéo để xem từ nhiều góc độ</div>
+    </div>
+
+    <!-- Hidden images for 3D scene -->
+    <div style="display: none;">
+        <img id="photo-1" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=300&h=400&fit=crop&crop=face" alt="Người nhận 1">
+        <img id="photo-2" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=400&fit=crop&crop=face" alt="Người nhận 2">
+    </div>
+
+    <script>
+        // ========== BIẾN TOÀN CỤC ==========
+        let currentScreen = 'start';
+        let icons3D = [];
+        let texts3D = [];
+        let photos3D = [];
+        let isDragging = false;
+        let lastMouseX = 0;
+        let lastMouseY = 0;
+        let rotationX = 0;
+        let rotationY = 0;
+        let isCardOpened = false;
+        let isTypingFinished = false;
+
+        // ========== KHỞI TẠO HIỆU ỨNG ==========
+        function initEffects() {
+            createStars3D();
+            createSnowBackground();
+        }
+
+        // Tạo sao 3D
+        function createStars3D() {
+            const stars = document.getElementById('stars');
+            for (let i = 0; i < 150; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                const size = Math.random() * 3 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                
+                const z = Math.random() * 600 - 300;
+                star.style.transform = `translateZ(${z}px)`;
+                star.style.opacity = 0.2 + (z + 300) / 1200;
+                star.style.animationDelay = `${Math.random() * 5}s`;
+                
+                stars.appendChild(star);
+            }
+        }
+
+        // Tạo tuyết nền - NHIỀU HƠN
+        function createSnowBackground() {
+            const snowBg = document.getElementById('snow-bg');
+            for (let i = 0; i < 100; i++) { // TĂNG LÊN 100
+                const snowflake = document.createElement('div');
+                snowflake.className = 'snowflake';
+                const size = Math.random() * 5 + 1; // LỚN HƠN
+                snowflake.style.width = `${size}px`;
+                snowflake.style.height = `${size}px`;
+                snowflake.style.left = `${Math.random() * 100}%`;
+                snowflake.style.top = `${Math.random() * 100}%`;
+                
+                const duration = Math.random() * 20 + 15;
+                const delay = Math.random() * 10;
+                const tx = Math.random() * 80 - 40; // RỘNG HƠN
+                const tz = Math.random() * 80 - 40;
+                const rx = Math.random() * 360;
+                const ry = Math.random() * 360;
+                
+                snowflake.style.setProperty('--tx', `${tx}px`);
+                snowflake.style.setProperty('--tz', `${tz}px`);
+                snowflake.style.setProperty('--rx', `${rx}deg`);
+                snowflake.style.setProperty('--ry', `${ry}deg`);
+                snowflake.style.animation = `floatDown ${duration}s linear infinite`;
+                snowflake.style.animationDelay = `${delay}s`;
+                snowflake.style.opacity = Math.random() * 0.6 + 0.3; // SÁNG HƠN
+                
+                snowBg.appendChild(snowflake);
+            }
+        }
+
+        // ========== CHUYỂN MÀN HÌNH ==========
+        function switchScreen(to) {
+            const screens = ['start', 'tree', 'card', 'main'];
+            
+            // Ẩn tất cả màn hình
+            screens.forEach(screen => {
+                const screenElement = document.getElementById(`${screen}-screen`);
+                screenElement.style.display = 'none';
+                screenElement.style.opacity = '0';
+            });
+            
+            // Hiển thị màn hình mới
+            const newScreen = document.getElementById(`${to}-screen`);
+            newScreen.style.display = 'flex';
+            
+            setTimeout(() => {
+                newScreen.style.opacity = '1';
+            }, 10);
+            
+            currentScreen = to;
+            
+            // Khởi tạo màn hình mới
+            switch(to) {
+                case 'tree':
+                    drawTreeWithAnimation();
+                    break;
+                case 'card':
+                    initCard();
+                    break;
+                case 'main':
+                    init3DScene();
+                    break;
+            }
+        }
+
+        // ========== VẼ CÂY THÔNG VỚI HIỆU ỨNG ==========
+        function drawTreeWithAnimation() {
+            const canvas = document.getElementById('tree-canvas');
+            const ctx = canvas.getContext('2d');
+            const instruction = document.querySelector('.tree-instruction');
+            
+            // Xóa canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Tọa độ trung tâm
+            const centerX = canvas.width / 2;
+            const bottomY = canvas.height - 40;
+            
+            const drawSteps = [
+                // Bước 1: Vẽ thân cây
+                () => {
+                    instruction.textContent = "Đang vẽ thân cây...";
+                    ctx.fillStyle = '#8B4513';
+                    ctx.strokeStyle = '#A0522D';
+                    ctx.lineWidth = 3;
+                    ctx.beginPath();
+                    ctx.roundRect(centerX - 15, bottomY - 60, 30, 60, 8);
+                    ctx.fill();
+                    ctx.stroke();
+                },
+                // Bước 2: Vẽ tầng 1
+                () => {
+                    instruction.textContent = "Đang vẽ tầng lá thứ nhất...";
+                    drawTreeLayer(ctx, centerX, bottomY - 80, 160, '#27ae60');
+                },
+                // Bước 3: Vẽ tầng 2
+                () => {
+                    instruction.textContent = "Đang vẽ tầng lá thứ hai...";
+                    drawTreeLayer(ctx, centerX, bottomY - 130, 140, '#2ecc71');
+                },
+                // Bước 4: Vẽ tầng 3
+                () => {
+                    instruction.textContent = "Đang vẽ tầng lá thứ ba...";
+                    drawTreeLayer(ctx, centerX, bottomY - 180, 120, '#27ae60');
+                },
+                // Bước 5: Vẽ tầng 4
+                () => {
+                    instruction.textContent = "Đang vẽ tầng lá thứ tư...";
+                    drawTreeLayer(ctx, centerX, bottomY - 230, 100, '#2ecc71');
+                },
+                // Bước 6: Vẽ tầng 5
+                () => {
+                    instruction.textContent = "Đang vẽ tầng lá thứ năm...";
+                    drawTreeLayer(ctx, centerX, bottomY - 280, 80, '#27ae60');
+                },
+                // Bước 7: Vẽ tầng 6
+                () => {
+                    instruction.textContent = "Đang vẽ tầng lá thứ sáu...";
+                    drawTreeLayer(ctx, centerX, bottomY - 330, 60, '#2ecc71');
+                },
+                // Bước 8: Vẽ ngôi sao
+                () => {
+                    instruction.textContent = "Đang trang trí ngôi sao...";
+                    drawShinyStar(ctx, centerX, bottomY - 360);
+                },
+                // Bước 9: Vẽ trang trí
+                () => {
+                    instruction.textContent = "Đang thêm trang trí...";
+                    drawDecorations(ctx, centerX, bottomY);
+                },
+                // Bước 10: Hoàn thành
+                () => {
+                    instruction.textContent = "Cây thông Noel đã hoàn thành!";
+                    
+                    // Hiệu ứng ánh sáng
+                    const lightGradient = ctx.createRadialGradient(
+                        centerX, bottomY - 250, 10,
+                        centerX, bottomY - 250, 150
+                    );
+                    lightGradient.addColorStop(0, 'rgba(46, 204, 113, 0.3)');
+                    lightGradient.addColorStop(1, 'transparent');
+                    
+                    ctx.fillStyle = lightGradient;
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                }
+            ];
+            
+            // Thực hiện từng bước vẽ
+            drawSteps.forEach((step, index) => {
+                setTimeout(step, index * 800);
+            });
+        }
+
+        // Vẽ một tầng cây
+        function drawTreeLayer(ctx, centerX, y, width, color) {
+            ctx.fillStyle = color;
+            ctx.beginPath();
+            ctx.moveTo(centerX - width/2, y);
+            ctx.lineTo(centerX, y - 50);
+            ctx.lineTo(centerX + width/2, y);
+            ctx.closePath();
+            ctx.fill();
+            
+            ctx.strokeStyle = '#1e8449';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            
+            // Vẽ hoa văn
+            drawTreePattern(ctx, centerX, y, width);
+        }
+
+        // Vẽ hoa văn trên cây
+        function drawTreePattern(ctx, centerX, y, width) {
+            const patternCount = Math.floor(width / 30);
+            for (let i = 0; i < patternCount; i++) {
+                const x = centerX - width/2 + (i + 0.5) * (width / patternCount);
+                const patternY = y - Math.random() * 20;
+                
+                ctx.fillStyle = ['#e74c3c', '#3498db', '#f1c40f', '#9b59b6'][Math.floor(Math.random() * 4)];
+                ctx.beginPath();
+                ctx.arc(x, patternY, 6, 0, Math.PI * 2);
+                ctx.fill();
+                
+                ctx.strokeStyle = 'white';
+                ctx.lineWidth = 1;
+                ctx.stroke();
+            }
+        }
+
+        // Vẽ ngôi sao lấp lánh
+        function drawShinyStar(ctx, cx, cy) {
+            ctx.fillStyle = '#FFD700';
+            ctx.shadowColor = '#FFD700';
+            ctx.shadowBlur = 20;
+            drawStar(ctx, cx, cy, 5, 25, 12);
+            ctx.fill();
+            
+            ctx.fillStyle = '#FFFFFF';
+            ctx.shadowBlur = 15;
+            drawStar(ctx, cx, cy, 5, 18, 9);
+            ctx.fill();
+            
+            const glow = ctx.createRadialGradient(cx, cy, 0, cx, cy, 35);
+            glow.addColorStop(0, 'rgba(255, 215, 0, 0.8)');
+            glow.addColorStop(1, 'transparent');
+            
+            ctx.shadowBlur = 0;
+            ctx.fillStyle = glow;
+            ctx.beginPath();
+            ctx.arc(cx, cy, 35, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.shadowBlur = 0;
+        }
+
+        // Vẽ trang trí
+        function drawDecorations(ctx, centerX, bottomY) {
+            const decorations = [
+                {x: centerX - 60, y: bottomY - 100, type: 'circle', color: '#e74c3c'},
+                {x: centerX + 40, y: bottomY - 140, type: 'square', color: '#3498db'},
+                {x: centerX - 30, y: bottomY - 180, type: 'circle', color: '#f1c40f'},
+                {x: centerX + 50, y: bottomY - 220, type: 'diamond', color: '#9b59b6'},
+                {x: centerX - 20, y: bottomY - 260, type: 'circle', color: '#1abc9c'},
+                {x: centerX + 30, y: bottomY - 300, type: 'square', color: '#e67e22'},
+            ];
+            
+            decorations.forEach(dec => {
+                ctx.fillStyle = dec.color;
+                ctx.shadowColor = dec.color;
+                ctx.shadowBlur = 10;
+                
+                switch(dec.type) {
+                    case 'circle':
+                        ctx.beginPath();
+                        ctx.arc(dec.x, dec.y, 8, 0, Math.PI * 2);
+                        ctx.fill();
+                        break;
+                    case 'square':
+                        ctx.fillRect(dec.x - 6, dec.y - 6, 12, 12);
+                        break;
+                    case 'diamond':
+                        ctx.beginPath();
+                        ctx.moveTo(dec.x, dec.y - 8);
+                        ctx.lineTo(dec.x + 8, dec.y);
+                        ctx.lineTo(dec.x, dec.y + 8);
+                        ctx.lineTo(dec.x - 8, dec.y);
+                        ctx.closePath();
+                        ctx.fill();
+                        break;
+                }
+                
+                ctx.strokeStyle = 'white';
+                ctx.lineWidth = 1.5;
+                ctx.stroke();
+                
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(dec.x, dec.y - 8);
+                ctx.lineTo(centerX, bottomY - 330);
+                ctx.stroke();
+            });
+            
+            ctx.shadowBlur = 0;
+        }
+
+        // Hàm vẽ ngôi sao
+        function drawStar(ctx, cx, cy, spikes, outerRadius, innerRadius) {
+            let rot = Math.PI / 2 * 3;
+            let x = cx;
+            let y = cy;
+            const step = Math.PI / spikes;
+
+            ctx.beginPath();
+            ctx.moveTo(cx, cy - outerRadius);
+
+            for (let i = 0; i < spikes; i++) {
+                x = cx + Math.cos(rot) * outerRadius;
+                y = cy + Math.sin(rot) * outerRadius;
+                ctx.lineTo(x, y);
+                rot += step;
+
+                x = cx + Math.cos(rot) * innerRadius;
+                y = cy + Math.sin(rot) * innerRadius;
+                ctx.lineTo(x, y);
+                rot += step;
+            }
+
+            ctx.lineTo(cx, cy - outerRadius);
+            ctx.closePath();
+        }
+
+        // ========== THIỆP ==========
+        function initCard() {
+            const card = document.getElementById('christmas-card');
+            const messageElement = document.getElementById('card-message');
+            
+            // Reset
+            messageElement.innerHTML = '';
+            card.classList.remove('opened');
+            isCardOpened = false;
+            isTypingFinished = false;
+            
+            // Lời chúc
+            const message = `Gửi đến bạn những lời chúc tốt đẹp nhất
+trong mùa Giáng Sinh năm nay.
+
+Mong rằng niềm vui và hạnh phúc
+sẽ luôn đồng hành cùng bạn.
+
+Hãy để trái tim ấm áp
+lan tỏa yêu thương đến mọi người.
+
+Chúc bạn và gia đình một mùa Noel
+thật an lành và hạnh phúc!
+
+🎄 Merry Christmas! 🎅
+❄️ Hạnh phúc và bình an! ☃️
+
+Giáng Sinh 2024`;
+            
+            // Xử lý click mở thiệp
+            card.addEventListener('click', () => {
+                if (!isCardOpened) {
+                    isCardOpened = true;
+                    card.classList.add('opened');
+                    
+                    // Bắt đầu typing sau khi thiệp mở
+                    setTimeout(() => typeMessage(message, messageElement), 500);
+                }
+            });
+        }
+
+        // Hiệu ứng typing
+        function typeMessage(message, element) {
+            let index = 0;
+            element.innerHTML = '';
+            
+            function typeChar() {
+                if (index < message.length) {
+                    const char = message.charAt(index);
+                    if (char === '\n') {
+                        element.innerHTML += '<br>';
+                    } else {
+                        element.innerHTML += char;
+                    }
+                    index++;
+                    
+                    // Tốc độ typing
+                    const speed = char === '\n' ? 150 : Math.random() * 50 + 30;
+                    setTimeout(typeChar, speed);
+                } else {
+                    const cursor = document.createElement('span');
+                    cursor.className = 'typing-cursor';
+                    element.appendChild(cursor);
+                    
+                    isTypingFinished = true;
+                    
+                    // Tự động chuyển sang màn hình 3D sau 3 giây
+                    setTimeout(() => {
+                        if (isCardOpened && isTypingFinished) {
+                            switchScreen('main');
+                        }
+                    }, 3000);
+                }
+            }
+            
+            typeChar();
+        }
+
+        // ========== SCENE 3D ==========
+        function init3DScene() {
+            const scene = document.getElementById('scene-container');
+            
+            // Clear existing
+            texts3D.forEach(obj => obj.element.remove());
+            icons3D.forEach(obj => obj.element.remove());
+            photos3D.forEach(obj => obj.element.remove());
+            texts3D = [];
+            icons3D = [];
+            photos3D = [];
+            
+            // Tạo chữ 3D - NHIỀU HƠN VÀ RỘNG HƠN
+            const messages = [
+                {text: "Giáng Sinh Vui Vẻ", color: "#ff6b81"},
+                {text: "Noel Ấm Áp", color: "#ff9f43"},
+                {text: "Merry Christmas", color: "#3498db"},
+                {text: "An Lành & Hạnh Phúc", color: "#2ecc71"},
+                {text: "Chúc Mừng Giáng Sinh", color: "#9b59b6"},
+                {text: "Happy New Year", color: "#1abc9c"},
+                {text: "Bình An & Hạnh Phúc", color: "#e74c3c"},
+                {text: "Yêu Thương Tràn Đầy", color: "#f1c40f"},
+                {text: "🎄 Merry Xmas 🎄", color: "#27ae60"},
+                {text: "❄️ Mùa Đông Ấm Áp ❄️", color: "#3498db"}
+            ];
+            
+            messages.forEach((msg, index) => {
+                const text = document.createElement('div');
+                text.className = 'christmas-text';
+                text.textContent = msg.text;
+                text.style.color = msg.color;
+                
+                // VỊ TRÍ RỘNG HƠN
+                const x = Math.random() * 120 - 60;
+                const y = Math.random() * 80 - 150; // BẮT ĐẦU CAO HƠN
+                const z = Math.random() * 500 - 250;
+                
+                text.style.left = `50%`;
+                text.style.transform = `translate3d(${x}vw, ${y}vh, ${z}px)`;
+                text.style.fontSize = `${Math.random() * 1.5 + 2.5}rem`; // LỚN HƠN
+                text.style.opacity = 0.9 - Math.abs(z) / 600;
+                
+                scene.appendChild(text);
+                texts3D.push({
+                    element: text,
+                    speed: Math.random() * 0.3 + 0.15, // NHANH HƠN
+                    x, y, z
+                });
+            });
+            
+            // Tạo icon 3D - NHIỀU HƠN
+            const iconList = ['🎄', '🎁', '⭐', '❄️', '🎅', '🤶', '🔔', '❤️', '🌟', '☃️', '🦌', '🕯️', '🍪', '🥛', '🧦'];
+            
+            for (let i = 0; i < 35; i++) { // TĂNG LÊN 35
+                const icon = document.createElement('div');
+                icon.className = 'icon-3d';
+                icon.textContent = iconList[Math.floor(Math.random() * iconList.length)];
+                icon.style.color = ['#ff6b81', '#ff9f43', '#3498db', '#2ecc71', '#9b59b6', '#f1c40f'][Math.floor(Math.random() * 6)];
+                
+                // VỊ TRÍ RỘNG HƠN
+                const x = Math.random() * 120 - 60;
+                const y = Math.random() * 120 - 180; // BẮT ĐẦU CAO HƠN
+                const z = Math.random() * 600 - 300;
+                
+                icon.style.left = `50%`;
+                icon.style.transform = `translate3d(${x}vw, ${y}vh, ${z}px) rotate(${Math.random() * 360}deg)`;
+                icon.style.fontSize = `${Math.random() * 2 + 1.8}rem`; // LỚN HƠN
+                icon.style.opacity = 0.8 - Math.abs(z) / 800;
+                
+                scene.appendChild(icon);
+                icons3D.push({
+                    element: icon,
+                    speed: Math.random() * 0.4 + 0.1, // NHANH HƠN
+                    x, y, z,
+                    rotation: Math.random() * 360
+                });
+            }
+            
+            // Tạo ảnh của người nhận thiệp - 2 ảnh
+            const photos = [
+                {id: 'photo-1', width: 220, height: 280},
+                {id: 'photo-2', width: 200, height: 250}
+            ];
+            
+            photos.forEach((photo, index) => {
+                const photoDiv = document.createElement('div');
+                photoDiv.className = 'photo-3d';
+                
+                const img = new Image();
+                img.src = document.getElementById(photo.id).src;
+                img.alt = `Người nhận thiệp ${index + 1}`;
+                photoDiv.appendChild(img);
+                
+                // VỊ TRÍ RỘNG HƠN
+                const x = (index === 0 ? -40 : 40) + (Math.random() * 30 - 15);
+                const y = Math.random() * 100 - 180; // BẮT ĐẦU CAO HƠN
+                const z = Math.random() * 400 - 200;
+                
+                photoDiv.style.left = `50%`;
+                photoDiv.style.width = `${photo.width}px`;
+                photoDiv.style.height = `${photo.height}px`;
+                photoDiv.style.transform = `translate3d(${x}vw, ${y}vh, ${z}px) rotateY(${index === 0 ? 15 : -15}deg)`;
+                photoDiv.style.opacity = 0.9 - Math.abs(z) / 500;
+                
+                scene.appendChild(photoDiv);
+                photos3D.push({
+                    element: photoDiv,
+                    speed: Math.random() * 0.25 + 0.1, // NHANH HƠN
+                    x, y, z,
+                    rotation: 0
+                });
+            });
+            
+            // Bắt đầu animation vĩnh viễn
+            animate3DScene();
+            setupSceneInteraction();
+        }
+
+        // Animation 3D (chạy mãi mãi) - RỘNG HƠN VỀ TRỤC Y
+        function animate3DScene() {
+            function update() {
+                // Cập nhật chữ
+                texts3D.forEach(textObj => {
+                    let y = textObj.y;
+                    y += textObj.speed;
+                    
+                    // KHI RA KHỎI MÀN HÌNH (150 thay vì 120)
+                    if (y > 150) {
+                        y = -180; // BẮT ĐẦU CAO HƠN
+                        textObj.x = Math.random() * 120 - 60; // RỘNG HƠN
+                        textObj.z = Math.random() * 500 - 250;
+                    }
+                    
+                    textObj.y = y;
+                    textObj.element.style.transform = `translate3d(${textObj.x}vw, ${y}vh, ${textObj.z}px)`;
+                    textObj.element.style.opacity = 0.9 - Math.abs(textObj.z) / 600;
+                });
+                
+                // Cập nhật icon
+                icons3D.forEach(iconObj => {
+                    let y = iconObj.y;
+                    y += iconObj.speed;
+                    
+                    // KHI RA KHỎI MÀN HÌNH (150 thay vì 120)
+                    if (y > 150) {
+                        y = -200; // BẮT ĐẦU CAO HƠN
+                        iconObj.x = Math.random() * 120 - 60; // RỘNG HƠN
+                        iconObj.z = Math.random() * 600 - 300;
+                        iconObj.rotation = Math.random() * 360;
+                    }
+                    
+                    iconObj.y = y;
+                    iconObj.rotation += 0.2; // XOAY NHANH HƠN
+                    
+                    iconObj.element.style.transform = `translate3d(${iconObj.x}vw, ${y}vh, ${iconObj.z}px) rotate(${iconObj.rotation}deg)`;
+                    iconObj.element.style.opacity = 0.8 - Math.abs(iconObj.z) / 800;
+                    
+                    // Hiệu ứng lung linh
+                    const scale = 1 + Math.sin(Date.now() / 1200 + iconObj.z) * 0.25;
+                    iconObj.element.style.transform += ` scale(${scale})`;
+                });
+                
+                // Cập nhật ảnh
+                photos3D.forEach(photoObj => {
+                    let y = photoObj.y;
+                    y += photoObj.speed;
+                    
+                    // KHI RA KHỎI MÀN HÌNH (150 thay vì 120)
+                    if (y > 150) {
+                        y = -180; // BẮT ĐẦU CAO HƠN
+                        photoObj.z = Math.random() * 400 - 200;
+                        photoObj.rotation = 0;
+                    }
+                    
+                    photoObj.y = y;
+                    photoObj.rotation += 0.08;
+                    
+                    // Xoay nhẹ và di chuyển
+                    const sway = Math.sin(Date.now() / 2500 + photoObj.x) * 8; // SWAY RỘNG HƠN
+                    photoObj.element.style.transform = `translate3d(${photoObj.x + sway}vw, ${y}vh, ${photoObj.z}px) rotateY(${photoObj.rotation}deg)`;
+                    photoObj.element.style.opacity = 0.9 - Math.abs(photoObj.z) / 500;
+                });
+                
+                requestAnimationFrame(update);
+            }
+            
+            update();
+        }
+
+        // Tương tác xoay scene
+        function setupSceneInteraction() {
+            const scene = document.getElementById('scene-container');
+            
+            document.addEventListener('mousedown', (e) => {
+                if (currentScreen !== 'main') return;
+                isDragging = true;
+                lastMouseX = e.clientX;
+                lastMouseY = e.clientY;
+            });
+            
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging || currentScreen !== 'main') return;
+                
+                const deltaX = e.clientX - lastMouseX;
+                const deltaY = e.clientY - lastMouseY;
+                
+                rotationY += deltaX * 0.3;
+                rotationX += deltaY * 0.2;
+                rotationX = Math.max(-25, Math.min(25, rotationX));
+                
+                scene.style.transform = `perspective(1000px) rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
+                
+                lastMouseX = e.clientX;
+                lastMouseY = e.clientY;
+            });
+            
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+            
+            // Touch events cho mobile
+            document.addEventListener('touchstart', (e) => {
+                if (currentScreen !== 'main') return;
+                isDragging = true;
+                lastMouseX = e.touches[0].clientX;
+                lastMouseY = e.touches[0].clientY;
+            });
+            
+            document.addEventListener('touchmove', (e) => {
+                if (!isDragging || currentScreen !== 'main') return;
+                
+                const deltaX = e.touches[0].clientX - lastMouseX;
+                const deltaY = e.touches[0].clientY - lastMouseY;
+                
+                rotationY += deltaX * 0.3;
+                rotationX += deltaY * 0.2;
+                rotationX = Math.max(-25, Math.min(25, rotationX));
+                
+                scene.style.transform = `perspective(1000px) rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
+                
+                lastMouseX = e.touches[0].clientX;
+                lastMouseY = e.touches[0].clientY;
+                e.preventDefault();
+            });
+            
+            document.addEventListener('touchend', () => {
+                isDragging = false;
+            });
+        }
+
+        // ========== XỬ LÝ CLICK ==========
+        function handleScreenClick(e) {
+            switch(currentScreen) {
+                case 'start':
+                    switchScreen('tree');
+                    break;
+                case 'tree':
+                    // Chỉ chuyển nếu click vào màn hình (không phải thiệp)
+                    if (!e.target.closest('#christmas-card')) {
+                        switchScreen('card');
+                    }
+                    break;
+                case 'card':
+                    // Chỉ chuyển nếu thiệp đã mở VÀ click vào màn hình (không phải thiệp)
+                    if (isCardOpened && isTypingFinished && !e.target.closest('#christmas-card')) {
+                        switchScreen('main');
+                    }
+                    break;
+                case 'main':
+                    // Không làm gì cả - để scene 3D chạy mãi mãi
+                    break;
+            }
+        }
+
+        // ========== KHỞI CHẠY ==========
+        document.addEventListener('DOMContentLoaded', () => {
+            initEffects();
+            
+            // Hiển thị màn hình đầu tiên
+            switchScreen('start');
+            
+            // Xử lý click toàn màn hình
+            document.addEventListener('click', handleScreenClick);
+            
+            // Thêm style cho animation tuyết
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes floatDown {
+                    0% {
+                        transform: translate3d(0, -180px, 0) rotateX(0deg) rotateY(0deg); /* CAO HƠN */
+                        opacity: 0;
+                    }
+                    10% {
+                        opacity: 1;
+                    }
+                    90% {
+                        opacity: 1;
+                    }
+                    100% {
+                        transform: translate3d(var(--tx), 150vh, var(--tz)) rotateX(var(--rx)) rotateY(var(--ry)); /* XUỐNG SÂU HƠN */
+                        opacity: 0;
+                    }
+                }
+                
+                canvas {
+                    border-radius: 10px;
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+</html>
