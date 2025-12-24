@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Chúc Mừng Giáng Sinh 2024</title>
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap">
+    <title>Chúc Mừng Giáng Sinh 2025</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap">
     <style>
         * {
             margin: 0;
@@ -60,15 +58,8 @@
         }
 
         @keyframes titleFloat {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         .start-subtitle {
@@ -90,15 +81,8 @@
         }
 
         @keyframes blink {
-
-            0%,
-            100% {
-                opacity: 0.5;
-            }
-
-            50% {
-                opacity: 1;
-            }
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
 
         /* Màn hình cây thông */
@@ -146,17 +130,17 @@
 
         .card-container {
             perspective: 1000px;
-            width: 100vw;
+            width: 90vw;
             max-width: 350px;
-            height: 100vh;
+            height: 70vh;
             max-height: 500px;
             opacity: 1;
             transition: transform 0.5s ease;
         }
 
         .card {
-            width: 120%;
-            height: 120%;
+            width: 100%;
+            height: 100%;
             position: relative;
             transform-style: preserve-3d;
             transition: transform 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -166,8 +150,7 @@
             transform: rotateY(180deg);
         }
 
-        .card-front,
-        .card-back {
+        .card-front, .card-back {
             position: absolute;
             width: 100%;
             height: 100%;
@@ -179,30 +162,6 @@
             align-items: center;
             padding: 1.5rem;
             overflow: hidden;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            transform-style: preserve-3d;
-        }
-
-        .card-front {
-            z-index: 2;
-        }
-
-        .card-back {
-            z-index: 1;
-        }
-
-        /* Thêm background solid để che hoàn toàn */
-        .card-back::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, #c44569, #d63031, #e17055);
-            z-index: -1;
-            border-radius: inherit;
         }
 
         /* Mặt trước thiệp */
@@ -220,7 +179,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background:
+            background: 
                 radial-gradient(circle at 20% 80%, rgba(255, 107, 129, 0.15) 0%, transparent 50%),
                 radial-gradient(circle at 80% 20%, rgba(46, 204, 113, 0.15) 0%, transparent 50%);
         }
@@ -247,12 +206,14 @@
             background: linear-gradient(135deg, #c44569, #d63031, #e17055);
             transform: rotateY(180deg);
             border: 2px solid rgba(255, 215, 0, 0.6);
-            box-shadow:
+            box-shadow: 
                 inset 0 0 50px rgba(0, 0, 0, 0.4),
                 0 15px 40px rgba(198, 69, 105, 0.3);
             justify-content: flex-start;
             padding-top: 1.5rem;
             overflow: hidden;
+            -webkit-backface-visibility: hidden !important;
+            backface-visibility: hidden !important;
         }
 
         .card-back::before {
@@ -262,7 +223,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background:
+            background: 
                 radial-gradient(circle at 10% 20%, rgba(255, 215, 0, 0.2) 0%, transparent 40%),
                 radial-gradient(circle at 90% 80%, rgba(46, 204, 113, 0.2) 0%, transparent 40%);
             z-index: 0;
@@ -281,7 +242,7 @@
 
         .card-back-title {
             font-family: 'Dancing Script', cursive;
-            font-size: 2rem;
+            font-size: 1.5rem;
             color: #FFD700;
             margin-bottom: 1rem;
             text-align: center;
@@ -290,14 +251,14 @@
         }
 
         .card-message-container {
-            width: 105%;
-            height: calc(120% - 120px);
+            width: 100%;
+            height: calc(100% - 120px);
             padding: 1rem;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             border: 1px solid rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(5px);
-            box-shadow:
+            box-shadow: 
                 inset 0 0 20px rgba(255, 255, 255, 0.1),
                 0 5px 15px rgba(0, 0, 0, 0.2);
             display: flex;
@@ -307,7 +268,7 @@
         }
 
         .card-message {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             line-height: 1.6;
             color: #FFFFFF;
             text-align: center;
@@ -361,15 +322,8 @@
         }
 
         @keyframes twinkle {
-
-            0%,
-            100% {
-                opacity: 0.2;
-            }
-
-            50% {
-                opacity: 1;
-            }
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
         }
 
         /* Tuyết nền - TỐI ƯU CHO MOBILE */
@@ -463,7 +417,7 @@
         .continue-btn {
             position: absolute;
             bottom: 30px;
-            left: 55%;
+            left: 50%;
             transform: translateX(-50%);
             background: linear-gradient(45deg, #ff6b81, #ff9f43);
             color: white;
@@ -484,19 +438,11 @@
             opacity: 1;
             visibility: visible;
             animation: bounce 2s infinite;
-
         }
 
         @keyframes bounce {
-
-            0%,
-            100% {
-                transform: translateX(-50%) translateY(0);
-            }
-
-            50% {
-                transform: translateX(-50%) translateY(-5px);
-            }
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-5px); }
         }
 
         /* View instruction - cho mobile */
@@ -532,19 +478,19 @@
             .start-title {
                 font-size: 3rem;
             }
-
+            
             .card-back-title {
                 font-size: 1.8rem;
             }
-
+            
             .card-message {
                 font-size: 1rem;
             }
-
+            
             .christmas-text {
                 font-size: 1.3rem;
             }
-
+            
             .icon-3d {
                 font-size: 1.5rem;
             }
@@ -554,30 +500,30 @@
             .start-title {
                 font-size: 2.5rem;
             }
-
+            
             .tree-canvas-container {
                 width: 85vw;
                 height: 60vh;
             }
-
+            
             .card-container {
                 width: 85vw;
                 height: 65vh;
             }
-
+            
             .card-front-title {
                 font-size: 2rem;
             }
-
+            
             .card-back-title {
                 font-size: 1.6rem;
             }
-
+            
             .card-message {
                 font-size: 0.95rem;
                 line-height: 1.5;
             }
-
+            
             .replay-btn {
                 bottom: 15px;
                 right: 15px;
@@ -585,7 +531,7 @@
                 height: 45px;
                 font-size: 1.3rem;
             }
-
+            
             .continue-btn {
                 padding: 0.7rem 1.5rem;
                 font-size: 1rem;
@@ -599,33 +545,32 @@
                 height: 80vh;
                 max-height: 350px;
             }
-
+            
             .card-container {
                 height: 85vh;
                 max-height: 400px;
             }
-
+            
             .card-message-container {
                 height: calc(100% - 80px);
             }
-
+            
             .start-title {
                 font-size: 2.5rem;
                 margin-bottom: 0.5rem;
             }
-
+            
             .start-subtitle {
                 font-size: 0.9rem;
                 margin-bottom: 1rem;
             }
-
+            
             .start-hint {
                 margin-top: 1rem;
             }
         }
     </style>
 </head>
-
 <body>
     <!-- Màn hình bắt đầu -->
     <div id="start-screen" class="screen">
@@ -653,7 +598,7 @@
                 </div>
                 <div class="card-back">
                     <div class="card-back-content">
-                        <h3 class="card-back-title">🎄 Lời Chúc Giáng Sinh 🎄</h3>
+                        <h3 class="card-back-title">🎄Lời Chúc Giáng Sinh🎄</h3>
                         <div class="card-message-container">
                             <div class="card-message" id="card-message"></div>
                         </div>
@@ -713,12 +658,12 @@
                 star.style.height = `${size}px`;
                 star.style.left = `${Math.random() * 100}%`;
                 star.style.top = `${Math.random() * 100}%`;
-
+                
                 const z = Math.random() * 300 - 150;
                 star.style.transform = `translateZ(${z}px)`;
                 star.style.opacity = 0.2 + (z + 150) / 300;
                 star.style.animationDelay = `${Math.random() * 5}s`;
-
+                
                 stars.appendChild(star);
             }
         }
@@ -735,14 +680,14 @@
                 snowflake.style.height = `${size}px`;
                 snowflake.style.left = `${Math.random() * 100}%`;
                 snowflake.style.top = `${Math.random() * 100}%`;
-
+                
                 const duration = Math.random() * 15 + 10;
                 const delay = Math.random() * 5;
                 const tx = Math.random() * 50 - 25;
                 const tz = Math.random() * 50 - 25;
                 const rx = Math.random() * 360;
                 const ry = Math.random() * 360;
-
+                
                 snowflake.style.setProperty('--tx', `${tx}px`);
                 snowflake.style.setProperty('--tz', `${tz}px`);
                 snowflake.style.setProperty('--rx', `${rx}deg`);
@@ -750,7 +695,7 @@
                 snowflake.style.animation = `floatDown ${duration}s linear infinite`;
                 snowflake.style.animationDelay = `${delay}s`;
                 snowflake.style.opacity = Math.random() * 0.5 + 0.3;
-
+                
                 snowBg.appendChild(snowflake);
             }
         }
@@ -758,23 +703,23 @@
         // ========== CHUYỂN MÀN HÌNH ==========
         function switchScreen(to) {
             const screens = ['start', 'tree', 'card', 'main'];
-
+            
             screens.forEach(screen => {
                 const screenElement = document.getElementById(`${screen}-screen`);
                 screenElement.style.display = 'none';
                 screenElement.style.opacity = '0';
             });
-
+            
             const newScreen = document.getElementById(`${to}-screen`);
             newScreen.style.display = 'flex';
-
+            
             setTimeout(() => {
                 newScreen.style.opacity = '1';
             }, 10);
-
+            
             currentScreen = to;
-
-            switch (to) {
+            
+            switch(to) {
                 case 'tree':
                     drawTreeWithAnimation();
                     break;
@@ -793,63 +738,102 @@
             const container = canvas.parentElement;
             canvas.width = container.clientWidth;
             canvas.height = container.clientHeight;
-
+            
             const ctx = canvas.getContext('2d');
             const instruction = document.querySelector('.tree-instruction');
-
+            
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-
+            
             const centerX = canvas.width / 2;
             const bottomY = canvas.height - 30;
-
+            
             const drawSteps = [
                 () => {
                     instruction.textContent = "Đang vẽ thân cây...";
                     ctx.fillStyle = '#8B4513';
                     ctx.strokeStyle = '#A0522D';
-                    ctx.lineWidth = 2;
+                    ctx.lineWidth = 3;
                     ctx.beginPath();
-                    ctx.roundRect(centerX - 12, bottomY - 50, 24, 50, 6);
+                    ctx.roundRect(centerX - 15, bottomY - 60, 30, 60, 8);
                     ctx.fill();
                     ctx.stroke();
                 },
+                // TẦNG 1
                 () => {
-                    instruction.textContent = "Đang vẽ lá...";
-                    drawTreeLayer(ctx, centerX, bottomY - 70, canvas.width * 0.4, '#27ae60');
+                    instruction.textContent = "Đang vẽ tầng lá thứ nhất...";
+                    drawTreeLayer(ctx, centerX, bottomY - 80, canvas.width * 0.4, '#27ae60');
                 },
+                // TẦNG 2
                 () => {
-                    drawTreeLayer(ctx, centerX, bottomY - 110, canvas.width * 0.35, '#2ecc71');
+                    instruction.textContent = "Đang vẽ tầng lá thứ hai...";
+                    drawTreeLayer(ctx, centerX, bottomY - 130, canvas.width * 0.35, '#2ecc71');
                 },
+                // TẦNG 3
                 () => {
-                    drawTreeLayer(ctx, centerX, bottomY - 150, canvas.width * 0.3, '#27ae60');
+                    instruction.textContent = "Đang vẽ tầng lá thứ ba...";
+                    drawTreeLayer(ctx, centerX, bottomY - 180, canvas.width * 0.3, '#27ae60');
                 },
+                // TẦNG 4
+                () => {
+                    instruction.textContent = "Đang vẽ tầng lá thứ tư...";
+                    drawTreeLayer(ctx, centerX, bottomY - 230, canvas.width * 0.25, '#2ecc71');
+                },
+                // TẦNG 5
+                () => {
+                    instruction.textContent = "Đang vẽ tầng lá thứ năm...";
+                    drawTreeLayer(ctx, centerX, bottomY - 280, canvas.width * 0.2, '#27ae60');
+                },
+                // TẦNG 6
+                () => {
+                    instruction.textContent = "Đang vẽ tầng lá thứ sáu...";
+                    drawTreeLayer(ctx, centerX, bottomY - 330, canvas.width * 0.15, '#2ecc71');
+                },
+                // TRANG TRÍ
                 () => {
                     instruction.textContent = "Đang trang trí...";
-                    drawShinyStar(ctx, centerX, bottomY - 180);
+                    drawShinyStar(ctx, centerX, bottomY - 360);
                     drawDecorations(ctx, centerX, bottomY);
                 },
+                // HOÀN THÀNH
                 () => {
-                    instruction.textContent = "Cây thông đã hoàn thành!";
+                    instruction.textContent = "Cây thông Noel đã hoàn thành!";
                 }
             ];
-
+            
             drawSteps.forEach((step, index) => {
-                setTimeout(step, index * 800);
+                setTimeout(step, index * 700);
             });
         }
 
         function drawTreeLayer(ctx, centerX, y, width, color) {
             ctx.fillStyle = color;
             ctx.beginPath();
-            ctx.moveTo(centerX - width / 2, y);
+            ctx.moveTo(centerX - width/2, y);
             ctx.lineTo(centerX, y - 40);
-            ctx.lineTo(centerX + width / 2, y);
+            ctx.lineTo(centerX + width/2, y);
             ctx.closePath();
             ctx.fill();
-
+            
             ctx.strokeStyle = '#1e8449';
             ctx.lineWidth = 1.5;
             ctx.stroke();
+            
+            // Thêm hoa văn nhỏ trên tầng cây
+            drawTreePattern(ctx, centerX, y, width);
+        }
+
+        function drawTreePattern(ctx, centerX, y, width) {
+            const patternCount = Math.floor(width / 25);
+            for (let i = 0; i < patternCount; i++) {
+                const x = centerX - width/2 + (i + 0.5) * (width / patternCount);
+                const patternY = y - Math.random() * 15;
+                
+                // Vẽ hình tròn trang trí nhỏ
+                ctx.fillStyle = ['#e74c3c', '#3498db', '#f1c40f', '#9b59b6'][Math.floor(Math.random() * 4)];
+                ctx.beginPath();
+                ctx.arc(x, patternY, 4, 0, Math.PI * 2);
+                ctx.fill();
+            }
         }
 
         function drawShinyStar(ctx, cx, cy) {
@@ -863,18 +847,29 @@
 
         function drawDecorations(ctx, centerX, bottomY) {
             const decorations = [
-                { x: centerX - 40, y: bottomY - 80, color: '#e74c3c' },
-                { x: centerX + 25, y: bottomY - 110, color: '#3498db' },
-                { x: centerX - 20, y: bottomY - 140, color: '#f1c40f' },
+                {x: centerX - 40, y: bottomY - 100, color: '#e74c3c'},
+                {x: centerX + 30, y: bottomY - 140, color: '#3498db'},
+                {x: centerX - 25, y: bottomY - 180, color: '#f1c40f'},
+                {x: centerX + 35, y: bottomY - 220, color: '#9b59b6'},
+                {x: centerX - 20, y: bottomY - 260, color: '#1abc9c'},
+                {x: centerX + 25, y: bottomY - 300, color: '#e67e22'},
             ];
-
+            
             decorations.forEach(dec => {
                 ctx.fillStyle = dec.color;
                 ctx.beginPath();
-                ctx.arc(dec.x, dec.y, 5, 0, Math.PI * 2);
+                ctx.arc(dec.x, dec.y, 6, 0, Math.PI * 2);
                 ctx.fill();
                 ctx.strokeStyle = 'white';
                 ctx.lineWidth = 1;
+                ctx.stroke();
+                
+                // Dây treo
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+                ctx.lineWidth = 0.5;
+                ctx.beginPath();
+                ctx.moveTo(dec.x, dec.y - 6);
+                ctx.lineTo(centerX, bottomY - 360);
                 ctx.stroke();
             });
         }
@@ -906,19 +901,19 @@
             const card = document.getElementById('christmas-card');
             const messageElement = document.getElementById('card-message');
             const continueBtn = document.getElementById('continue-btn');
-
+            
             messageElement.innerHTML = '';
             card.classList.remove('opened');
             continueBtn.classList.remove('show');
             isCardOpened = false;
             isTypingFinished = false;
-
+            
             const message = `Mùa Giáng Sinh năm nay
 Anh chúc em thật nhiều niềm vui và hạnh phúc.
 Mong rằng những điều tốt đẹp nhất sẽ luôn bên cạnh em, những ước mơ nhỏ bé sẽ thành hiện thực và trái tim em luôn ấm áp dù mùa đông không lạnh 😆😆.
 Hãy luôn giữ nụ cười rạng rỡ ấy nha.
 !!! Merry Christmas !!!`;
-
+            
             card.addEventListener('click', () => {
                 if (!isCardOpened) {
                     isCardOpened = true;
@@ -926,7 +921,7 @@ Hãy luôn giữ nụ cười rạng rỡ ấy nha.
                     setTimeout(() => typeMessage(message, messageElement, continueBtn), 500);
                 }
             });
-
+            
             continueBtn.addEventListener('click', () => {
                 if (isTypingFinished) {
                     switchScreen('main');
@@ -937,7 +932,7 @@ Hãy luôn giữ nụ cười rạng rỡ ấy nha.
         function typeMessage(message, element, continueBtn) {
             let index = 0;
             element.innerHTML = '';
-
+            
             function typeChar() {
                 if (index < message.length) {
                     const char = message.charAt(index);
@@ -947,58 +942,58 @@ Hãy luôn giữ nụ cười rạng rỡ ấy nha.
                         element.innerHTML += char;
                     }
                     index++;
-
+                    
                     const speed = char === '\n' ? 120 : Math.random() * 40 + 20;
                     setTimeout(typeChar, speed);
                 } else {
                     const cursor = document.createElement('span');
                     cursor.className = 'typing-cursor';
                     element.appendChild(cursor);
-
+                    
                     isTypingFinished = true;
                     setTimeout(() => {
                         continueBtn.classList.add('show');
                     }, 500);
                 }
             }
-
+            
             typeChar();
         }
 
         // ========== SCENE 3D ==========
         function init3DScene() {
             const scene = document.getElementById('scene-container');
-
+            
             texts3D.forEach(obj => obj.element.remove());
             icons3D.forEach(obj => obj.element.remove());
             photos3D.forEach(obj => obj.element.remove());
             texts3D = [];
             icons3D = [];
             photos3D = [];
-
+            
             // Tạo chữ 3D
             const messages = [
-                { text: "Giáng Sinh Vui Vẻ", color: "#ff6b81" },
-                { text: "Noel Ấm Áp", color: "#ff9f43" },
-                { text: "Merry Christmas", color: "#3498db" },
-                { text: "An Lành & Hạnh Phúc", color: "#2ecc71" },
+                {text: "Giáng Sinh Vui Vẻ", color: "#ff6b81"},
+                {text: "Noel Ấm Áp", color: "#ff9f43"},
+                {text: "Merry Christmas", color: "#3498db"},
+                {text: "An Lành & Hạnh Phúc", color: "#2ecc71"},
             ];
-
+            
             messages.forEach((msg, index) => {
                 const text = document.createElement('div');
                 text.className = 'christmas-text';
                 text.textContent = msg.text;
                 text.style.color = msg.color;
-
+                
                 const x = Math.random() * 80 - 40;
                 const y = Math.random() * 60 - 100;
                 const z = Math.random() * 400 - 200;
-
+                
                 text.style.left = `50%`;
                 text.style.transform = `translate3d(${x}vw, ${y}vh, ${z}px)`;
                 text.style.fontSize = `${Math.random() * 0.5 + 1.3}rem`;
                 text.style.opacity = 0.8 - Math.abs(z) / 500;
-
+                
                 scene.appendChild(text);
                 texts3D.push({
                     element: text,
@@ -1006,25 +1001,25 @@ Hãy luôn giữ nụ cười rạng rỡ ấy nha.
                     x, y, z
                 });
             });
-
+            
             // Tạo icon 3D
             const iconList = ['🎄', '🎁', '⭐', '❄️', '🎅', '🤶', '🔔', '❤️', '🌟', '☃️'];
-
+            
             for (let i = 0; i < 20; i++) {
                 const icon = document.createElement('div');
                 icon.className = 'icon-3d';
                 icon.textContent = iconList[Math.floor(Math.random() * iconList.length)];
                 icon.style.color = ['#ff6b81', '#ff9f43', '#3498db', '#2ecc71'][Math.floor(Math.random() * 4)];
-
+                
                 const x = Math.random() * 80 - 40;
                 const y = Math.random() * 80 - 120;
                 const z = Math.random() * 400 - 200;
-
+                
                 icon.style.left = `50%`;
                 icon.style.transform = `translate3d(${x}vw, ${y}vh, ${z}px) rotate(${Math.random() * 360}deg)`;
                 icon.style.fontSize = `${Math.random() * 0.8 + 1.2}rem`;
                 icon.style.opacity = 0.7 - Math.abs(z) / 600;
-
+                
                 scene.appendChild(icon);
                 icons3D.push({
                     element: icon,
@@ -1033,36 +1028,36 @@ Hãy luôn giữ nụ cười rạng rỡ ấy nha.
                     rotation: Math.random() * 360
                 });
             }
-
+            
             // Tạo ảnh - NHIỀU HƠN (6 ảnh thay vì 2)
             const photos = [
-                { id: 'photo-1', width: 120, height: 160 },
-                { id: 'photo-2', width: 110, height: 150 },
-                { id: 'photo-1', width: 130, height: 170 },
-                { id: 'photo-2', width: 100, height: 140 },
-                { id: 'photo-1', width: 115, height: 155 },
-                { id: 'photo-2', width: 125, height: 165 }
+                {id: 'photo-1', width: 120, height: 160},
+                {id: 'photo-2', width: 110, height: 150},
+                {id: 'photo-1', width: 130, height: 170},
+                {id: 'photo-2', width: 100, height: 140},
+                {id: 'photo-1', width: 115, height: 155},
+                {id: 'photo-2', width: 125, height: 165}
             ];
-
+            
             photos.forEach((photo, index) => {
                 const photoDiv = document.createElement('div');
                 photoDiv.className = 'photo-3d';
-
+                
                 const img = new Image();
                 img.src = document.getElementById(photo.id).src;
                 img.alt = `Ảnh kỷ niệm ${index + 1}`;
                 photoDiv.appendChild(img);
-
+                
                 const x = (index % 3 - 1) * 30 + (Math.random() * 20 - 10);
                 const y = Math.random() * 80 - 140;
                 const z = Math.random() * 300 - 150;
-
+                
                 photoDiv.style.left = `50%`;
                 photoDiv.style.width = `${photo.width}px`;
                 photoDiv.style.height = `${photo.height}px`;
                 photoDiv.style.transform = `translate3d(${x}vw, ${y}vh, ${z}px) rotateY(${Math.random() * 40 - 20}deg)`;
                 photoDiv.style.opacity = 0.9 - Math.abs(z) / 400;
-
+                
                 scene.appendChild(photoDiv);
                 photos3D.push({
                     element: photoDiv,
@@ -1071,12 +1066,12 @@ Hãy luôn giữ nụ cười rạng rỡ ấy nha.
                     rotation: 0
                 });
             });
-
+            
             // Nút xem lại thiệp
             document.getElementById('replay-btn').addEventListener('click', () => {
                 switchScreen('card');
             });
-
+            
             animate3DScene();
             setupSceneInteraction();
         }
@@ -1086,63 +1081,63 @@ Hãy luôn giữ nụ cười rạng rỡ ấy nha.
                 texts3D.forEach(textObj => {
                     let y = textObj.y;
                     y += textObj.speed;
-
+                    
                     if (y > 100) {
                         y = -100;
                         textObj.x = Math.random() * 80 - 40;
                         textObj.z = Math.random() * 400 - 200;
                     }
-
+                    
                     textObj.y = y;
                     textObj.element.style.transform = `translate3d(${textObj.x}vw, ${y}vh, ${textObj.z}px)`;
                     textObj.element.style.opacity = 0.8 - Math.abs(textObj.z) / 500;
                 });
-
+                
                 icons3D.forEach(iconObj => {
                     let y = iconObj.y;
                     y += iconObj.speed;
-
+                    
                     if (y > 100) {
                         y = -120;
                         iconObj.x = Math.random() * 80 - 40;
                         iconObj.z = Math.random() * 400 - 200;
                         iconObj.rotation = Math.random() * 360;
                     }
-
+                    
                     iconObj.y = y;
                     iconObj.rotation += 0.15;
-
+                    
                     iconObj.element.style.transform = `translate3d(${iconObj.x}vw, ${y}vh, ${iconObj.z}px) rotate(${iconObj.rotation}deg)`;
                     iconObj.element.style.opacity = 0.7 - Math.abs(iconObj.z) / 600;
                 });
-
+                
                 photos3D.forEach(photoObj => {
                     let y = photoObj.y;
                     y += photoObj.speed;
-
+                    
                     if (y > 100) {
                         y = -140;
                         photoObj.z = Math.random() * 300 - 150;
                         photoObj.rotation = 0;
                     }
-
+                    
                     photoObj.y = y;
                     photoObj.rotation += 0.05;
-
+                    
                     const sway = Math.sin(Date.now() / 2000 + photoObj.x) * 5;
                     photoObj.element.style.transform = `translate3d(${photoObj.x + sway}vw, ${y}vh, ${photoObj.z}px) rotateY(${photoObj.rotation}deg)`;
                     photoObj.element.style.opacity = 0.9 - Math.abs(photoObj.z) / 400;
                 });
-
+                
                 requestAnimationFrame(update);
             }
-
+            
             update();
         }
 
         function setupSceneInteraction() {
             const scene = document.getElementById('scene-container');
-
+            
             // Touch events cho mobile
             scene.addEventListener('touchstart', (e) => {
                 if (currentScreen !== 'main') return;
@@ -1150,29 +1145,29 @@ Hãy luôn giữ nụ cười rạng rỡ ấy nha.
                 lastTouchX = e.touches[0].clientX;
                 lastTouchY = e.touches[0].clientY;
                 e.preventDefault();
-            }, { passive: false });
-
+            }, {passive: false});
+            
             scene.addEventListener('touchmove', (e) => {
                 if (!isDragging || currentScreen !== 'main') return;
-
+                
                 const deltaX = e.touches[0].clientX - lastTouchX;
                 const deltaY = e.touches[0].clientY - lastTouchY;
-
+                
                 rotationY += deltaX * 0.5;
                 rotationX += deltaY * 0.3;
                 rotationX = Math.max(-25, Math.min(25, rotationX));
-
+                
                 scene.style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
-
+                
                 lastTouchX = e.touches[0].clientX;
                 lastTouchY = e.touches[0].clientY;
                 e.preventDefault();
-            }, { passive: false });
-
+            }, {passive: false});
+            
             scene.addEventListener('touchend', () => {
                 isDragging = false;
             });
-
+            
             // Mouse events cho desktop
             scene.addEventListener('mousedown', (e) => {
                 if (currentScreen !== 'main') return;
@@ -1180,23 +1175,23 @@ Hãy luôn giữ nụ cười rạng rỡ ấy nha.
                 lastTouchX = e.clientX;
                 lastTouchY = e.clientY;
             });
-
+            
             scene.addEventListener('mousemove', (e) => {
                 if (!isDragging || currentScreen !== 'main') return;
-
+                
                 const deltaX = e.clientX - lastTouchX;
                 const deltaY = e.clientY - lastTouchY;
-
+                
                 rotationY += deltaX * 0.3;
                 rotationX += deltaY * 0.2;
                 rotationX = Math.max(-25, Math.min(25, rotationX));
-
+                
                 scene.style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
-
+                
                 lastTouchX = e.clientX;
                 lastTouchY = e.clientY;
             });
-
+            
             scene.addEventListener('mouseup', () => {
                 isDragging = false;
             });
@@ -1204,7 +1199,7 @@ Hãy luôn giữ nụ cười rạng rỡ ấy nha.
 
         // ========== XỬ LÝ CLICK ==========
         function handleScreenClick(e) {
-            switch (currentScreen) {
+            switch(currentScreen) {
                 case 'start':
                     switchScreen('tree');
                     break;
@@ -1228,12 +1223,12 @@ Hãy luôn giữ nụ cười rạng rỡ ấy nha.
             const container = canvas.parentElement;
             canvas.width = container.clientWidth;
             canvas.height = container.clientHeight;
-
+            
             initEffects();
             switchScreen('start');
-
+            
             document.addEventListener('click', handleScreenClick);
-
+            
             // Thêm style cho animation tuyết
             const style = document.createElement('style');
             style.textContent = `
@@ -1259,7 +1254,7 @@ Hãy luôn giữ nụ cười rạng rỡ ấy nha.
                 }
             `;
             document.head.appendChild(style);
-
+            
             // Xử lý resize window
             window.addEventListener('resize', () => {
                 if (currentScreen === 'tree') {
@@ -1269,5 +1264,4 @@ Hãy luôn giữ nụ cười rạng rỡ ấy nha.
         });
     </script>
 </body>
-
 </html>
