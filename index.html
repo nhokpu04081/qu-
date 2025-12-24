@@ -647,8 +647,52 @@
         <img id="photo-1" src="./img/7139f78d-6c83-40cb-a7a6-845952308864.jpg" alt="Người nhận 1">
         <img id="photo-2" src="./img/7d7f6939-94ba-4532-bc0c-98d6aaa2669d.jpg" alt="Người nhận 2">
     </div>
+    <!-- Thêm nhạc nền Giáng Sinh -->
+<audio id="background-music" loop>
+    <source src="christmas-music.mp3" type="audio/mpeg">
+    Trình duyệt của bạn không hỗ trợ phát nhạc.
+</audio>
+
+<!-- Nút bật/tắt nhạc (tùy chọn, để đẹp thì ẩn hoặc làm icon nhỏ) -->
+<button id="music-toggle" style="position: absolute; top: 20px; right: 20px; z-index: 1000; background: rgba(255,107,129,0.7); color: white; border: none; padding: 10px; border-radius: 50%; font-size: 1.5rem; cursor: pointer;">
+    🎵
+</button>
 
     <script>
+
+        // ========== NHẠC NỀN GIÁNG SINH ==========
+const bgMusic = document.getElementById('background-music');
+const musicToggle = document.getElementById('music-toggle');
+let isMusicPlaying = false;
+
+// Phát nhạc khi người dùng tương tác lần đầu (click bất kỳ đâu)
+document.body.addEventListener('click', function unlockAudio() {
+    if (!isMusicPlaying) {
+        bgMusic.volume = 0.4; // Âm lượng vừa phải (0.0 đến 1.0)
+        bgMusic.play().then(() => {
+            isMusicPlaying = true;
+            musicToggle.textContent = '🔊'; // Icon khi đang phát
+        }).catch(() => {
+            console.log("Không thể phát nhạc tự động");
+        });
+    }
+    // Chỉ cần unlock một lần
+    document.body.removeEventListener('click', unlockAudio);
+}, { once: true });
+
+// Nút bật/tắt nhạc (tùy chọn)
+musicToggle.addEventListener('click', (e) => {
+    e.stopPropagation(); // Ngăn trigger unlockAudio
+    if (isMusicPlaying) {
+        bgMusic.pause();
+        isMusicPlaying = false;
+        musicToggle.textContent = '🔇';
+    } else {
+        bgMusic.play();
+        isMusicPlaying = true;
+        musicToggle.textContent = '🔊';
+    }
+});
         // ========== BIẾN TOÀN CỤC ==========
         let currentScreen = 'start';
         let icons3D = [];
