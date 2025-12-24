@@ -162,7 +162,31 @@
             align-items: center;
             padding: 1.5rem;
             overflow: hidden;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            transform-style: preserve-3d;
         }
+        /* Đảm bảo mặt sau hoàn toàn ẩn */
+.card-front {
+    z-index: 2;
+}
+
+.card-back {
+    z-index: 1;
+}
+
+/* Thêm background solid để che hoàn toàn */
+.card-back::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #c44569, #d63031, #e17055);
+    z-index: -1;
+    border-radius: inherit;
+}
 
         /* Mặt trước thiệp */
         .card-front {
@@ -212,8 +236,6 @@
             justify-content: flex-start;
             padding-top: 1.5rem;
             overflow: hidden;
-            -webkit-backface-visibility: hidden !important;
-            backface-visibility: hidden !important;
         }
 
         .card-back::before {
@@ -268,7 +290,7 @@
         }
 
         .card-message {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             line-height: 1.6;
             color: #FFFFFF;
             text-align: center;
